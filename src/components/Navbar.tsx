@@ -2,6 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
+import { useRouter } from "next/router";
 
 export const StyledNav = styled.nav`
   display: flex;
@@ -22,17 +23,31 @@ export const StyledLink = styled.a`
   }
 `;
 
-const Navbar = () => {
+interface Props {}
+
+const Navbar: React.FC<Props> = () => {
+  const router = useRouter();
+
+  const handleHomeClick = () => {
+    router.push("/");
+  };
+  const handleUploadClick = () => {
+    router.push("/Upload");
+  };
+  const handleListenClick = () => {
+    router.push("/Listen");
+  };
+
   return (
     <StyledNav>
-      <Link href="/">
-        <StyledLink>Home</StyledLink>
+      <Link onClick={handleHomeClick} href="/">
+        Home
       </Link>
-      <Link href="/upload">
-        <StyledLink>Upload</StyledLink>
+      <Link onClick={handleUploadClick} href="/Upload">
+        Upload
       </Link>
-      <Link href="/listen">
-        <StyledLink>Listen</StyledLink>
+      <Link onClick={handleListenClick} href="/Listen">
+        Listen
       </Link>
     </StyledNav>
   );
