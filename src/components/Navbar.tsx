@@ -1,12 +1,11 @@
 // Navbar.tsx
 import React from "react";
-import Link from "next/link";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 
 export const StyledNav = styled.nav`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   background-color: #333;
   color: #fff;
@@ -17,6 +16,8 @@ export const StyledLink = styled.a`
   color: #fff;
   text-decoration: none;
   margin-right: 1rem;
+  font-size: 1.5rem;
+  padding: 0.5rem;
 
   &:hover {
     color: #ccc;
@@ -34,21 +35,15 @@ const Navbar: React.FC<Props> = () => {
   const handleUploadClick = () => {
     router.push("/Upload");
   };
-  // const handleListenClick = () => {
-  //   router.push("/Listen");
-  // };
 
   return (
     <StyledNav>
-      <Link onClick={handleHomeClick} href="/">
+      <StyledLink onClick={handleHomeClick} href="/">
         Home
-      </Link>
-      <Link onClick={handleUploadClick} href="/Upload">
+      </StyledLink>
+      <StyledLink onClick={handleUploadClick} href="/Upload">
         Upload
-      </Link>
-      {/* <Link onClick={handleListenClick} href="/Listen">
-        Listen
-      </Link> */}
+      </StyledLink>
     </StyledNav>
   );
 };
