@@ -25,20 +25,20 @@ const Audio = styled.audio`
 
 const AudioPlayer: React.FC<{ file: File | null }> = ({ file }) => {
   const [audioUrl, setAudioUrl] = useState("");
-  const handlePlayClick = async () => {
-    if (!file) {
-      return;
-    }
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      setAudioUrl(reader.result as string);
-    };
+  // const handlePlayClick = async () => {
+  if (!file) {
+    return;
+  }
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = () => {
+    setAudioUrl(reader.result as string);
   };
+  // };
 
   return (
     <Container>
-      <PlayButton onClick={handlePlayClick}>Play</PlayButton>
+      {/* <PlayButton onClick={handlePlayClick}>Play</PlayButton> */}
       <Audio controls={true} src={audioUrl} />
     </Container>
   );
