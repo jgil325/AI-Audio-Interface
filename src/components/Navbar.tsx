@@ -34,9 +34,9 @@ const Navbar: React.FC<Props> = () => {
   const handleUploadClick = () => {
     router.push("/Upload");
   };
-  const handleListenClick = () => {
-    router.push("/Listen");
-  };
+  // const handleListenClick = () => {
+  //   router.push("/Listen");
+  // };
 
   return (
     <StyledNav>
@@ -46,9 +46,9 @@ const Navbar: React.FC<Props> = () => {
       <Link onClick={handleUploadClick} href="/Upload">
         Upload
       </Link>
-      <Link onClick={handleListenClick} href="/Listen">
+      {/* <Link onClick={handleListenClick} href="/Listen">
         Listen
-      </Link>
+      </Link> */}
     </StyledNav>
   );
 };
