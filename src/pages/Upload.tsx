@@ -64,7 +64,7 @@ const Upload: React.FC = () => {
       <TranscribeButton onClick={transcribe}>Transcribe</TranscribeButton>
       <br />
       <div>{transcription}</div>
-      {/* <Listen file={audio}></Listen> */}
+      {/* <Listen file={file}></Listen> */}
     </div>
   );
 };
