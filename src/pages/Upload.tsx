@@ -2,10 +2,65 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import AudioPlayer from "../components/AudioPlayer";
 
+const Container = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 const TranscribeButton = styled.button`
   color: white;
   background: tomato;
   border-radius: 5px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+`;
+
+const Input = styled.input`
+  padding: 10px 20px;
+  margin-top: 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+`;
+
+const Title = styled.h1`
+  font-size: 24px;
+  margin-bottom: 20px;
+`;
+
+const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const TranscriptionContainer = styled.div`
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const TranscriptionTitle = styled.h2`
+  font-size: 18px;
+  margin-bottom: 10px;
+`;
+
+const TranscriptionText = styled.p`
+  font-size: 16px;
+  text-align: center;
+`;
+
+const AudioPlayerContainer = styled.div`
+  margin-top: 20px;
 `;
 
 const Upload: React.FC = () => {
@@ -58,15 +113,20 @@ const Upload: React.FC = () => {
   };
 
   return (
-    <div>
-      <input type="file" onChange={handleFile} accept="audio/*" />
-      {/* <button onClick={transcribe}>Transcribe</button> */}
-      <TranscribeButton onClick={transcribe}>Transcribe</TranscribeButton>
-      <br />
-      <div>{transcription}</div>
-      <br />
-      <AudioPlayer file={file}></AudioPlayer>
-    </div>
+    <Container>
+      <Title>Transcribe Audio Files</Title>
+      <InputContainer>
+        <Input type="file" onChange={handleFile} accept="audio/*" />
+        <TranscribeButton onClick={transcribe}>Transcribe</TranscribeButton>
+      </InputContainer>
+      <TranscriptionContainer>
+        <TranscriptionTitle>Transcription:</TranscriptionTitle>
+        <TranscriptionText>{transcription}</TranscriptionText>
+      </TranscriptionContainer>
+      <AudioPlayerContainer>
+        <AudioPlayer file={file} />
+      </AudioPlayerContainer>
+    </Container>
   );
 };
 
