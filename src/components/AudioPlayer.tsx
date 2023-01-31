@@ -27,7 +27,7 @@ const AudioPlayer: React.FC<{ file: File | null }> = ({ file }) => {
   const [audioUrl, setAudioUrl] = useState("");
   // const handlePlayClick = async () => {
   if (!file) {
-    return;
+    return <></>;
   }
   const reader = new FileReader();
   reader.readAsDataURL(file);
