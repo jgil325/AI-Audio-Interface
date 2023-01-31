@@ -14,7 +14,7 @@ export const StyledHome = styled.div`
 const Home = () => {
   return (
     <StyledHome>
-      <h1>Welcome to the Home Page!</h1>
+      <h1>Home Page</h1>
     </StyledHome>
   );
 };

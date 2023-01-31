@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import Listen from "./Listen";
 
 const TranscribeButton = styled.button`
   color: white;
@@ -63,6 +64,7 @@ const Upload: React.FC = () => {
       <TranscribeButton onClick={transcribe}>Transcribe</TranscribeButton>
       <br />
       <div>{transcription}</div>
+      {/* <Listen file={audio}></Listen> */}
     </div>
   );
 };
