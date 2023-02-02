@@ -7,9 +7,9 @@ const TeamContainer = styled.div`
   height: 70vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
-  padding-top: 50px;
+  padding-top: 30px;
 `;
 
 const About = () => {
