@@ -47,7 +47,7 @@ const Navbar: React.FC<Props> = () => {
       <StyledLink onClick={handleUploadClick} href="/Upload">
         Upload
       </StyledLink>
-      <StyledLink onClick={handleAboutClick} href="/Upload">
+      <StyledLink onClick={handleAboutClick} href="/About">
         About
       </StyledLink>
     </StyledNav>
