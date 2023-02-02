@@ -35,6 +35,9 @@ const Navbar: React.FC<Props> = () => {
   const handleUploadClick = () => {
     router.push("/Upload");
   };
+  const handleAboutClick = () => {
+    router.push("/About");
+  };
 
   return (
     <StyledNav>
@@ -43,6 +46,9 @@ const Navbar: React.FC<Props> = () => {
       </StyledLink>
       <StyledLink onClick={handleUploadClick} href="/Upload">
         Upload
+      </StyledLink>
+      <StyledLink onClick={handleAboutClick} href="/Upload">
+        About
       </StyledLink>
     </StyledNav>
   );
