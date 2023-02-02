@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 
 export const StyledNav = styled.nav`
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
   background-color: #333;
   color: #fff;
