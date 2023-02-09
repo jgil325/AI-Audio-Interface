@@ -104,7 +104,7 @@ const Upload: React.FC = () => {
       ) {
         break;
       }
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       console.log("RESEND REQUEST");
     }
     setTranscription(getRes.data.text);
