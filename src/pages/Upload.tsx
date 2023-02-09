@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import AudioPlayer from "../components/AudioPlayer";
+var Sentiment = require("sentiment");
 
 const Container = styled.div`
   width: 100vw;
@@ -64,6 +65,7 @@ const AudioPlayerContainer = styled.div`
 `;
 
 const Upload: React.FC = () => {
+  var sentiment = new Sentiment();
   const axios = require("axios");
   const [transcription, setTranscription] = useState("");
   const [file, setFile] = useState<File | null>(null);
@@ -110,6 +112,10 @@ const Upload: React.FC = () => {
     setTranscription(getRes.data.text);
     console.log(getRes.data);
     console.log(transcription);
+
+    var result = sentiment.analyze(transcription);
+    console.log("CHECK HERE");
+    console.log(result);
   };
 
   return (
