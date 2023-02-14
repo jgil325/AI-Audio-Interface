@@ -42,10 +42,10 @@ fileRef
   .getDownloadURL()
   .then((url) => {
     // Add the URL to the Firestore database
-    db.collection("audio/audio")
+    db.collection("audio3/")
       .add({
         url: url,
-        name: fileRef,
+        name: "Audio1.mp3",
       })
       .then(() => {
         console.log("File URL added to Firestore database");
