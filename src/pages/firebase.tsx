@@ -57,3 +57,5 @@ fileRef
   .catch((error) => {
     console.error("Error getting file URL", error);
   });
+
+export default firebase;
