@@ -1,7 +1,8 @@
 //import * as firebase from 'firebase/compat/app';
 import firebase from "firebase/compat/app";
-import "firebase/storage";
-import "firebase/database";
+import "firebase/compat/storage";
+import "firebase/compat/database";
+import "firebase/compat/firestore";
 
 // Initialize Firebase
 const firebaseConfig = {
