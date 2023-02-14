@@ -1,7 +1,8 @@
 //import * as firebase from 'firebase/compat/app';
 import firebase from "firebase/compat/app";
-import "firebase/storage";
-import 'firebase/database';
+import "firebase/compat/storage";
+import "firebase/compat/database";
+import 'firebase/compat/firestore';
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -40,7 +41,7 @@ const fileRef = storageRef.child("Audio1.mp3");
 // Get a URL for the file
 fileRef.getDownloadURL().then((url) => {
     // Add the URL to the Firestore database
-    db.collection('audio/audio').add({
+    db.collection('audio3/').add({
       url: url,
       name: fileRef
     }).then(() => {
@@ -51,3 +52,5 @@ fileRef.getDownloadURL().then((url) => {
   }).catch((error) => {
     console.error('Error getting file URL', error);
   });
+
+  export default firebase;
