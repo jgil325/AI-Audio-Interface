@@ -23,7 +23,7 @@ firebase.initializeApp(firebaseConfig);
 
 // // Get the URL of the file
 // storageRef.getDownloadURL().then((url) => {
-//   // Add the URL as a value in the Realtime Database
+//   // Add the URL as a value in the Realtime Databasee
 //   firebase.database().ref("Audio1.mp3").set(url);
 // });
 
@@ -34,21 +34,27 @@ const storageRef = storage.ref();
 // Get a reference to the Firestore database
 const db = firebase.firestore();
 
+//Set up arrays to add everything to the database
+let name: string[] = ["Audio1.mp3", "Audio2.mp3", "Audio3.mp3", "Audio4.mp3", "Audio5.mp3", "Audio6.mp3", "Audio7.mp3", "Audio8.mp3", "Audio9.mp3", "Audio10.mp3"];
+let category: string[] = ["Climate/", "Energy/", "Weather/", "Atmosphere/", "Emissions/", "Fossil Fuels/", "Sea Level/", "Temperature/", "Natural Gas/", "Global/"]
+
+for (let i = 0; i < name.length; i++) {
 // Get a reference to the file in Firebase Storage
-const fileRef = storageRef.child("Audio1.mp3");
+const fileRef = storageRef.child(name[i]);
 
 // Get a URL for the file
 fileRef
   .getDownloadURL()
   .then((url) => {
     // Add the URL to the Firestore database
-    db.collection("audio3/")
+    db.collection(category[i])
       .add({
         url: url,
-        name: "Audio1.mp3",
+        name: name[i],
       })
       .then(() => {
         console.log("File URL added to Firestore database");
+        console.log(url);
       })
       .catch((error) => {
         console.error("Error adding file URL to Firestore database", error);
@@ -57,5 +63,7 @@ fileRef
   .catch((error) => {
     console.error("Error getting file URL", error);
   });
+
+}
 
 export default firebase;

@@ -17,4 +17,5 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 console.log(firebase.apps.length);
 console.log(firebase.auth().currentUser);
 
+
 export default MyApp;
