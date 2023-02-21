@@ -5,7 +5,11 @@ import { Types } from "../BubbleChart/types";
 import styled from "styled-components";
 import uuid from "react-uuid";
 
-export const ChartButton = styled.button``;
+const ChartButton = styled.button``;
+const ChartContainer = styled.div`
+  align-items: center;
+  margin-left: 150px;
+`;
 
 class BubbleChart extends React.Component<
   IBubbleChartProps,
@@ -129,7 +133,7 @@ class BubbleChart extends React.Component<
 
   render() {
     return (
-      <div>
+      <ChartContainer>
         {/* <ChartButton
           color="default"
           onClick={() => {
@@ -148,7 +152,7 @@ class BubbleChart extends React.Component<
             {this.renderBubbles(this.state.data as [])}
           </svg>
         </div>
-      </div>
+      </ChartContainer>
     );
   }
 }

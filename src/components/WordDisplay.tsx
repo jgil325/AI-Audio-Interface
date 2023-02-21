@@ -26,28 +26,24 @@ const d: Types.Data[] = [
 ];
 
 const ChartContainer = styled.div`
-  display: flex;
-  flex-direction: row;
+  align-items: center;
   margin-left: 150px;
 `;
 
 const WordDisplay = () => {
   return (
-    <div>
-      <div>WordDisplay</div>
-      <ChartContainer>
-        <BubbleChart
-          bubblesData={d}
-          width={800}
-          height={600}
-          textFillColor="white"
-          backgroundColor="black"
-          minValue={1}
-          maxValue={150}
-          selectedCircle={Function}
-        />
-      </ChartContainer>
-    </div>
+    <ChartContainer>
+      <BubbleChart
+        bubblesData={d}
+        width={1000}
+        height={600}
+        textFillColor="white"
+        backgroundColor="black"
+        minValue={1}
+        maxValue={150}
+        selectedCircle={Function}
+      />
+    </ChartContainer>
   );
 };
 
