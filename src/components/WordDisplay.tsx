@@ -24,6 +24,7 @@ const d: Types.Data[] = [
   { id: 18, name: "sustainable", size: 150, fillColor: "green" },
   { id: 19, name: "environment", size: 150, fillColor: "green" },
 ];
+// connect firebase here
 
 const ChartContainer = styled.div`
   display: flex;
