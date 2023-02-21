@@ -32,18 +32,20 @@ const ChartContainer = styled.div`
   margin-left: 150px;
 `;
 
-const ShuffleButton = styled.button`
-  background: red;
-`;
+const ShuffleButton = styled.button``;
 
 const WordDisplay = () => {
   const [data, setData] = React.useState<Types.Data[]>(d.slice(1, 10));
   const changeData = () => {
     setData(d.sort(() => Math.random() - 0.5));
   };
+  const selectedKeyHandler = (key: string) => {
+    // eslint-disable-next-line no-alert
+    alert(key);
+  };
   return (
     <ChartContainer>
-      <ShuffleButton onClick={changeData}> SHUFFLE </ShuffleButton>
+      <ShuffleButton onClick={changeData}>SHUFFLE</ShuffleButton>
       <BubbleChart
         bubblesData={d}
         width={1000}
@@ -52,7 +54,7 @@ const WordDisplay = () => {
         backgroundColor="black"
         minValue={1}
         maxValue={150}
-        selectedCircle={Function}
+        selectedCircle={selectedKeyHandler}
       />
     </ChartContainer>
   );

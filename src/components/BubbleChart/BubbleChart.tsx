@@ -5,7 +5,9 @@ import { Types } from "../BubbleChart/types";
 import styled from "styled-components";
 import uuid from "react-uuid";
 
-const ChartButton = styled.button``;
+const ChartButton = styled.button`
+  margin-right: 150px;
+`;
 const ChartContainer = styled.div`
   align-items: center;
   margin-left: 150px;
@@ -134,14 +136,14 @@ class BubbleChart extends React.Component<
   render() {
     return (
       <ChartContainer>
-        {/* <ChartButton
+        <ChartButton
           color="default"
           onClick={() => {
             this.animateBubbles();
           }}
         >
           Animate
-        </ChartButton> */}
+        </ChartButton>
 
         <div
           aria-hidden="true"
