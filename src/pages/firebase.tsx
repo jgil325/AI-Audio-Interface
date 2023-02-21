@@ -36,7 +36,7 @@ const db = firebase.firestore();
 
 //Set up arrays to add everything to the database
 let name: string[] = ["Audio1.mp3", "Audio2.mp3", "Audio3.mp3", "Audio4.mp3", "Audio5.mp3", "Audio6.mp3", "Audio7.mp3", "Audio8.mp3", "Audio9.mp3", "Audio10.mp3"];
-let category: string[] = ["Climate/", "Energy/", "Weather/", "Atmosphere/", "Emissions/", "Fossil Fuels/", "Sea Level/", "Temperature/", "Natural Gas/", "Global/"]
+let category: string[] = ["Climate/", "Energy/", "Weather/", "Atmosphere/", "Emissions/", "Fossil Fuels/", "Sea Level/", "Temperature/", "Natural Gas/", "Global/", "Environment/", ]
 
 for (let i = 0; i < name.length; i++) {
 // Get a reference to the file in Firebase Storage
