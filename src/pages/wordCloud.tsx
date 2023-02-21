@@ -82,6 +82,7 @@ function WordCloud() {
 
       
     }
+    
   }, [loaded, collectionNames]);
 
 
