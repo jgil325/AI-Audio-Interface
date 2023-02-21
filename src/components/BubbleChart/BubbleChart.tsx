@@ -3,8 +3,7 @@ import * as d3 from "d3";
 import { Simulation, SimulationNodeDatum } from "d3-force";
 import { Types } from "../BubbleChart/types";
 import styled from "styled-components";
-
-const uuid = require("react-uuid");
+import uuid from "react-uuid";
 
 export const ChartButton = styled.button``;
 
@@ -131,14 +130,14 @@ class BubbleChart extends React.Component<
   render() {
     return (
       <div>
-        <ChartButton
+        {/* <ChartButton
           color="default"
           onClick={() => {
             this.animateBubbles();
           }}
         >
           Animate
-        </ChartButton>
+        </ChartButton> */}
 
         <div
           aria-hidden="true"
