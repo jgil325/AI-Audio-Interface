@@ -7,7 +7,7 @@ export const StyledNav = styled.nav`
   display: flex;
   justify-content: end;
   align-items: center;
-  background-color: #333;
+  background-color: #28b463;
   color: #fff;
   padding: 1rem;
 `;
