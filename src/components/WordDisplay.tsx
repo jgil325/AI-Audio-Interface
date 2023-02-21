@@ -26,13 +26,24 @@ const d: Types.Data[] = [
 ];
 
 const ChartContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   align-items: center;
   margin-left: 150px;
 `;
 
+const ShuffleButton = styled.button`
+  background: red;
+`;
+
 const WordDisplay = () => {
+  const [data, setData] = React.useState<Types.Data[]>(d.slice(1, 10));
+  const changeData = () => {
+    setData(d.sort(() => Math.random() - 0.5));
+  };
   return (
     <ChartContainer>
+      <ShuffleButton onClick={changeData}> SHUFFLE </ShuffleButton>
       <BubbleChart
         bubblesData={d}
         width={1000}
