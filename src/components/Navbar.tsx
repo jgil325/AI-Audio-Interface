@@ -10,6 +10,8 @@ export const StyledNav = styled.nav`
   background-color: #28b463;
   color: #fff;
   padding: 1rem;
+  position:fixed
+  z-index: 10000;
 `;
 
 export const StyledLink = styled.a`
