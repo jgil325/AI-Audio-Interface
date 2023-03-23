@@ -2,6 +2,16 @@ import { useState } from "react";
 import styled from "styled-components";
 import { MdAdd } from "react-icons/md";
 import { IoIosApps, IoMdMenu } from "react-icons/io";
+import logo from "../assets/logo-draft.png";
+import { IconContext } from "react-icons";
+
+// const CustomIcon = () => (
+//   <IconContext.Provider value={{ size: "1.5em", color: "white" }}>
+//     <svg viewBox="0 0 24 24">
+//       <path d="M12 2L3 15h18z" />
+//     </svg>
+//   </IconContext.Provider>
+// );
 
 const Container = styled.ul`
   display: flex;
@@ -100,6 +110,7 @@ const Fab = ({ actions }: FABProps) => {
     >
       <FabButton>
         <IoMdMenu />
+        {/* <CustomIcon /> */}
       </FabButton>
       {actions.map((action, index) => (
         <FabAction
