@@ -2,6 +2,16 @@ import { useState } from "react";
 import styled from "styled-components";
 import { MdAdd } from "react-icons/md";
 import { IoIosApps, IoMdMenu } from "react-icons/io";
+import logo from "../assets/logo-draft.png";
+import { IconContext } from "react-icons";
+
+// const CustomIcon = () => (
+//   <IconContext.Provider value={{ size: "1.5em", color: "white" }}>
+//     <svg viewBox="0 0 24 24">
+//       <path d="M12 2L3 15h18z" />
+//     </svg>
+//   </IconContext.Provider>
+// );
 
 const Container = styled.ul`
   display: flex;
@@ -13,6 +23,7 @@ const Container = styled.ul`
   left: 2em;
   top: 2em;
   max-width: 52px;
+  gap: 10px;
 
   &.open {
     max-width: max-content;
@@ -51,7 +62,7 @@ const FabAction = styled.li`
   opacity: 0;
 
   &:hover .tooltip {
-    transform: translateX(-100%) scale(1);
+    transform: translateY(-100%) scale(1);
     opacity: 1;
   }
 
@@ -65,7 +76,7 @@ const FabAction = styled.li`
     font-size: 12px;
     position: absolute;
     left: -12px;
-    transform: translateX(-75%);
+    transform: translateY(-75%);
     background-color: #353b48;
     border-radius: 4px;
     color: white;
@@ -100,6 +111,7 @@ const Fab = ({ actions }: FABProps) => {
     >
       <FabButton>
         <IoMdMenu />
+        {/* <CustomIcon /> */}
       </FabButton>
       {actions.map((action, index) => (
         <FabAction
