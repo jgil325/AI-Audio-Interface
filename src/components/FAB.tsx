@@ -23,6 +23,7 @@ const Container = styled.ul`
   left: 2em;
   top: 2em;
   max-width: 52px;
+  gap: 10px;
 
   &.open {
     max-width: max-content;
@@ -61,7 +62,7 @@ const FabAction = styled.li`
   opacity: 0;
 
   &:hover .tooltip {
-    transform: translateX(-100%) scale(1);
+    transform: translateY(-100%) scale(1);
     opacity: 1;
   }
 
@@ -75,7 +76,7 @@ const FabAction = styled.li`
     font-size: 12px;
     position: absolute;
     left: -12px;
-    transform: translateX(-75%);
+    transform: translateY(-75%);
     background-color: #353b48;
     border-radius: 4px;
     color: white;
