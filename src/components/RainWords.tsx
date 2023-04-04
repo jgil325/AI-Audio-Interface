@@ -24,6 +24,7 @@ const RainWords = ({ words }) => {
   const [wordStates, setWordStates] = useState<any[]>([]);
   const [selectedWord, setSelectedWord] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [windowHeight, setWindowHeight] = useState<number>(window.innerHeight);
 
   useEffect(() => {
     setWordStates(
@@ -34,6 +35,7 @@ const RainWords = ({ words }) => {
         shift: Math.random() * 100 - 50, // add a random shift value between -50 and 50
       }))
     );
+    setWindowHeight(window.innerHeight);
   }, [words]);
 
   useEffect(() => {
@@ -41,20 +43,17 @@ const RainWords = ({ words }) => {
       setWordStates((prevState) =>
         prevState.map((wordState) => ({
           ...wordState,
-          top:
-            wordState.top >= window.innerHeight + 50 ? -50 : wordState.top + 10,
+          top: wordState.top >= windowHeight + 50 ? -50 : wordState.top + 10,
           left:
-            wordState.top >= window.innerHeight + 50
+            wordState.top >= windowHeight + 50
               ? Math.random() * window.innerWidth
-              : wordState.top + 10 > window.innerHeight + 50
-              ? Math.random() * window.innerWidth
-              : wordState.left + wordState.shift,
+              : wordState.left,
         }))
       );
     }, 10000);
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [windowHeight]);
 
   const handleWordClick = (word: string) => {
     setSelectedWord(word);
