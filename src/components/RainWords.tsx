@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
+import Modal from "./Modal";
 
 const RainAnimation = keyframes`
   0% {
@@ -21,10 +22,12 @@ const WordWrapper = styled.div`
 
 const RainWords = ({ words }) => {
   const [wordStates, setWordStates] = useState<any[]>([]);
+  const [selectedWord, setSelectedWord] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     setWordStates(
-      words.map((word, index) => ({
+      words.map((word: any, index: number) => ({
         top: -50,
         left: Math.random() * window.innerWidth,
         delay: index * 0.2,
@@ -53,6 +56,15 @@ const RainWords = ({ words }) => {
     return () => clearInterval(intervalId);
   }, []);
 
+  const handleWordClick = (word: string) => {
+    setSelectedWord(word);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       {wordStates.map((word, index) => (
@@ -60,10 +72,21 @@ const RainWords = ({ words }) => {
           key={index}
           style={{ top: word.top, left: word.left + word.shift }}
           delay={word.delay}
+          onClick={() => handleWordClick(words[index])}
         >
           {words[index]}
         </WordWrapper>
       ))}
+      {isModalOpen && (
+        <Modal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          word={selectedWord}
+        >
+          <h2>{selectedWord}</h2>
+          <p>This is the text for {selectedWord}.</p>
+        </Modal>
+      )}
     </>
   );
 };
