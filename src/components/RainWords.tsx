@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import Modal from "./Modal";
 
+const RainWordsWrapper = styled.div``;
+
 const RainAnimation = keyframes`
   0% {
     transform: translateY(-50px);
@@ -24,7 +26,8 @@ const RainWords = ({ words }) => {
   const [wordStates, setWordStates] = useState<any[]>([]);
   const [selectedWord, setSelectedWord] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [windowHeight, setWindowHeight] = useState<number>(window.innerHeight);
+  const [windowHeight, setWindowHeight] = useState<number>(0);
+  const [windowWidth, setWindowWidth] = useState<number>(0);
 
   useEffect(() => {
     setWordStates(
@@ -35,8 +38,23 @@ const RainWords = ({ words }) => {
         shift: Math.random() * 100 - 50, // add a random shift value between -50 and 50
       }))
     );
-    setWindowHeight(window.innerHeight);
   }, [words]);
+
+  useEffect(() => {
+    setWindowHeight(window.innerHeight);
+    setWindowWidth(window.innerWidth);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowHeight(window.innerHeight);
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -46,14 +64,14 @@ const RainWords = ({ words }) => {
           top: wordState.top >= windowHeight + 50 ? -50 : wordState.top + 10,
           left:
             wordState.top >= windowHeight + 50
-              ? Math.random() * window.innerWidth
+              ? Math.random() * windowWidth
               : wordState.left,
         }))
       );
     }, 10000);
 
     return () => clearInterval(intervalId);
-  }, [windowHeight]);
+  }, [windowHeight, windowWidth]);
 
   const handleWordClick = (word: string) => {
     setSelectedWord(word);
@@ -65,7 +83,7 @@ const RainWords = ({ words }) => {
   };
 
   return (
-    <>
+    <RainWordsWrapper>
       {wordStates.map((word, index) => (
         <WordWrapper
           key={index}
@@ -86,7 +104,7 @@ const RainWords = ({ words }) => {
           <p>This is the text for {selectedWord}.</p>
         </Modal>
       )}
-    </>
+    </RainWordsWrapper>
   );
 };
 
