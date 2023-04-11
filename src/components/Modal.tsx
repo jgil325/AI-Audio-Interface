@@ -34,6 +34,9 @@ const Modal = ({ isOpen, onClose, word }) => {
     <ModalWrapper>
       <ModalContent>
         <WordWrapper>{word}</WordWrapper>
+        <WordWrapper>
+          <h3>This is the modal for the word {word}</h3>
+        </WordWrapper>
         <button onClick={onClose}>Close</button>
       </ModalContent>
     </ModalWrapper>,

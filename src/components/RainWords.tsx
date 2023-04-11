@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 import Modal from "./Modal";
 
 const RainWordsWrapper = styled.div``;
@@ -13,21 +13,27 @@ const RainAnimation = keyframes`
   }
 `;
 
-const WordWrapper = styled.div`
+const WordWrapper = styled.div<{ paused: boolean }>`
   position: absolute;
   z-index: 100;
   font-size: 1.5rem;
   color: white;
-  animation: ${RainAnimation} 15s linear infinite;
+  animation: ${(props) =>
+    props.paused
+      ? "none"
+      : css`
+          ${RainAnimation} 15s linear infinite;
+        `};
   animation-delay: ${(props) => props.delay}s;
 `;
 
-const RainWords = ({ words }) => {
+const RainWords = ({ words }: { words: string[] }) => {
   const [wordStates, setWordStates] = useState<any[]>([]);
   const [selectedWord, setSelectedWord] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [windowHeight, setWindowHeight] = useState<number>(0);
   const [windowWidth, setWindowWidth] = useState<number>(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     setWordStates(
@@ -57,21 +63,23 @@ const RainWords = ({ words }) => {
   }, []);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setWordStates((prevState) =>
-        prevState.map((wordState) => ({
-          ...wordState,
-          top: wordState.top >= windowHeight + 50 ? -50 : wordState.top + 10,
-          left:
-            wordState.top >= windowHeight + 50
-              ? Math.random() * windowWidth
-              : wordState.left,
-        }))
-      );
-    }, 10000);
+    if (!isPaused) {
+      const intervalId = setInterval(() => {
+        setWordStates((prevState) =>
+          prevState.map((wordState) => ({
+            ...wordState,
+            top: wordState.top >= windowHeight + 50 ? -50 : wordState.top + 10,
+            left:
+              wordState.top >= windowHeight + 50
+                ? Math.random() * windowWidth
+                : wordState.left,
+          }))
+        );
+      }, 10000);
 
-    return () => clearInterval(intervalId);
-  }, [windowHeight, windowWidth]);
+      return () => clearInterval(intervalId);
+    }
+  }, [windowHeight, windowWidth, isPaused]);
 
   const handleWordClick = (word: string) => {
     setSelectedWord(word);
@@ -82,8 +90,18 @@ const RainWords = ({ words }) => {
     setIsModalOpen(false);
   };
 
+  const handlePause = () => {
+    setIsPaused(true);
+  };
+
+  const handleResume = () => {
+    setIsPaused(false);
+  };
+
   return (
     <RainWordsWrapper>
+      <button onClick={handlePause}>Pause</button>
+      <button onClick={handleResume}>Resume</button>
       {wordStates.map((word, index) => (
         <WordWrapper
           key={index}
@@ -99,10 +117,7 @@ const RainWords = ({ words }) => {
           isOpen={isModalOpen}
           onClose={handleCloseModal}
           word={selectedWord}
-        >
-          <h2>{selectedWord}</h2>
-          <h2>This is the text for {selectedWord}.</h2>
-        </Modal>
+        />
       )}
     </RainWordsWrapper>
   );
