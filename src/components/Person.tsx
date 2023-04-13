@@ -14,11 +14,15 @@ const Name = styled.h3`
   padding-right: 10px;
 `;
 
+const handleWordClick = async (word: string) => {
+}
+
 const Person = ({ name, info }) => {
   return (
     <PersonContainer>
-      <Name>{name}</Name>
-      <p>{info}</p>
+      {/* <Name>{name}</Name>
+      <p>{info}</p> */}
+      <button onClick={() => handleWordClick(name)}>Hi</button>
     </PersonContainer>
   );
 };
