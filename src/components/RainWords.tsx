@@ -21,7 +21,7 @@ const WordWrapper = styled.div`
   z-index: 100;
   font-size: 1.5rem;
   color: white;
-  animation: ${RainAnimation} 10s linear infinite;
+  animation: ${RainAnimation} 18s linear infinite;
   animation-delay: ${(props) => props.delay}s;
   cursor: pointer;
 `;
