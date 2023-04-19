@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
-//COMMENT
 import Modal from "./Modal";
 
 // Empty div that serves as a container for rain of words
@@ -78,24 +77,6 @@ const RainWords = ({ words }) => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  //Sets up an interval to update the position of the falling words every 10 seconds
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     setWordStates((prevState) =>
-  //       prevState.map((wordState) => ({
-  //         ...wordState,
-  //         top: wordState.top >= windowHeight + 50 ? -50 : wordState.top + 10,
-  //         left:
-  //           wordState.top >= windowHeight + 50
-  //             ? Math.random() * windowWidth
-  //             : wordState.left,
-  //       }))
-  //     );
-  //   }, 100000);
-
-  //   return () => clearInterval(intervalId);
-  // }, [windowHeight, windowWidth]);
 
   //Called when the word is clicked and sets selectedWord.
   //Then opens up the modal by setting the isModalOpen state to true
