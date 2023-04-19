@@ -27,12 +27,20 @@ const Sidebar = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 `;
 
 const SidebarItem = styled.div`
   margin-top: 100px;
   color: white;
   margin-bottom: 10px;
+  padding-left: 10px;
+`;
+
+const SidebarAudioItem = styled.div`
+  color: white;
+  margin-bottom: 10px;
+  padding-left: 10px;
 `;
 
 const CloseButton = styled.button`
@@ -83,21 +91,14 @@ const Modal = ({ isOpen, onClose, word }) => {
     return null;
   }
 
-  // return ReactDOM.createPortal(
-  //   <Sidebar isOpen={isOpen}>
-  //        <SidebarItem>{word}</SidebarItem>
-  //        {url.map((url) => (
-  //          <audio key={url} src={url} controls />
-  //        ))}
-  //      </Sidebar>,
-  //   document.body
-  // );
   return (
     <Sidebar isOpen={isOpen}>
       <SidebarItem>{word}</SidebarItem>
-      {url.map((url) => (
-        <audio key={url} src={url} controls />
-      ))}
+      <SidebarAudioItem>
+        {url.map((url) => (
+          <audio key={url} src={url} controls />
+        ))}
+      </SidebarAudioItem>
       <CloseButton onClick={onClose}>Close</CloseButton>
     </Sidebar>
   );
