@@ -6,31 +6,37 @@ import styled from "styled-components";
 import { getFirestore, collection, doc, onSnapshot, getDocs } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 
-const ModalWrapper = styled.div`
-  background-color: rgba(0, 0, 0, 0.5);
+
+//SIDEBAR CHANGES
+
+const Sidebar = styled.div`
+width: 400px;
+  height: 100vh;
   position: fixed;
   top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  left: ${({ isOpen }) => isOpen ? '0' : '-400px'}; 
+  transition: left 1s ease-in-out;
   z-index: 999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const ModalContent = styled.div`
-  background-color: white;
+  background-color: #000000;
   padding: 20px;
-  border-radius: 5px;
+  box-sizing: border-box;
+  
 `;
 
-const WordWrapper = styled.div`
-  color: black;
+const SidebarItem = styled.div`
+  margin-top: 100px;
+  color: white;
+  margin-bottom: 10px;
 `;
 
+
+
+
+//Takes in three props 'isOpen, onClose, and Word
+//If isOpen is true, it renders the modal window with word
 const Modal = ({ isOpen, onClose, word }) => {
   const [url, setUrl] = useState<string[]>([]);
+  
 
   //Essentially what needs to be done so that data can be accessed from database
   useEffect(() => {
@@ -69,18 +75,28 @@ const Modal = ({ isOpen, onClose, word }) => {
     return null;
   }
 
-  return ReactDOM.createPortal(
-    <ModalWrapper>
-      <ModalContent>
-        <WordWrapper>{word}</WordWrapper>
-        <button onClick={onClose}>Close</button>
-        {url.map((url) => (
-          <audio key={url} src={url} controls />
-        ))}
-      </ModalContent>
-    </ModalWrapper>,
-    document.body
-  );
+  // return ReactDOM.createPortal(
+  //   <Sidebar isOpen={isOpen}>
+  //        <SidebarItem>{word}</SidebarItem>
+  //        {url.map((url) => (
+  //          <audio key={url} src={url} controls />
+  //        ))}
+  //      </Sidebar>,
+  //   document.body
+  // );
+  return (
+    <Sidebar isOpen={isOpen}>
+      <SidebarItem>{word}</SidebarItem>
+      {url.map((url) => (
+        <audio key={url} src={url} controls />
+      ))}
+            <button className="close-button" onClick={onClose}>Close</button>
+
+    </Sidebar>
+  )
 };
 
 export default Modal;
+
+
+

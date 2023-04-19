@@ -22,6 +22,7 @@ const Container = styled.ul`
   position: fixed;
   left: 2em;
   top: 2em;
+  z-index: 1000;
   max-width: 52px;
   gap: 10px;
 

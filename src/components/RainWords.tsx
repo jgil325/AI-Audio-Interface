@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
+//COMMENT
 import Modal from "./Modal";
+
+
 
 // Empty div that serves as a container for rain of words
 const RainWordsWrapper = styled.div``;
@@ -22,6 +25,19 @@ const WordWrapper = styled.div`
   color: white;
   animation: ${RainAnimation} 10s linear infinite;
   animation-delay: ${(props) => props.delay}s;
+  cursor: pointer;
+`;
+//Cursor-pointer above is new
+
+const ButtonWrapper = styled.button`
+position: fixed;
+top: 20px;
+right: 20px;
+background-color: transparent;
+border: none;
+color: white;
+font-size: 1.5rem;
+cursor: pointer;
 `;
 
 const RainWords = ({ words }) => {
@@ -30,7 +46,7 @@ const RainWords = ({ words }) => {
   //Currently selected word that the user clicked on
   const [selectedWord, setSelectedWord] = useState("");
   //Boolean flag that indicates whether the modal is currently open or not
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   //Window height + width are height and width of the browser window
   const [windowHeight, setWindowHeight] = useState<number>(0);
   const [windowWidth, setWindowWidth] = useState<number>(0);
@@ -89,19 +105,18 @@ const RainWords = ({ words }) => {
   //Then opens up the modal by setting the isModalOpen state to true
   const handleWordClick = (word: string) => {
     setSelectedWord(word);
-    setIsModalOpen(true);
+    setIsSidebarOpen(true);
   };
 
-  //Called when the modal is closed
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
 
+
+  const handleCloseSideBar = () => {
+    setIsSidebarOpen(false);
+  }
 
   return (
     //Contains a mapping of the wordStates Array to the Word Wrapper element for each falling word
     <RainWordsWrapper>
-      
       {wordStates.map((word, index) => (
        //Has an Onclick handler that calles handleWordClick function with the corresponding word from the words prop
         <WordWrapper
@@ -115,18 +130,27 @@ const RainWords = ({ words }) => {
         
       ))}
 
-      {isModalOpen && (
+     
+      {isSidebarOpen && (
         <Modal
-          isOpen={isModalOpen}
-          onClose={handleCloseModal}
-         word={selectedWord}
+          isOpen={isSidebarOpen}
+          onClose={handleCloseSideBar}
+          word={selectedWord}
         >
-          <h2>{selectedWord} </h2>
-          <p>This is the text for {selectedWord}.</p>
+        <ButtonWrapper onClick={handleCloseSideBar}>X</ButtonWrapper>
+
+
+        <h2>{selectedWord}</h2>
+        <p>This is the text for {selectedWord}.</p>
+        <button onClick={handleCloseSideBar}>Close</button>
+
         </Modal>
       )}
+
+      
     </RainWordsWrapper>
   );
 };
 
 export default RainWords;
+
