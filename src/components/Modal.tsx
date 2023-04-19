@@ -3,24 +3,30 @@ import { useEffect, useState } from "react";
 
 import ReactDOM from "react-dom";
 import styled from "styled-components";
-import { getFirestore, collection, doc, onSnapshot, getDocs } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  doc,
+  onSnapshot,
+  getDocs,
+} from "firebase/firestore";
 import { initializeApp } from "firebase/app";
-
 
 //SIDEBAR CHANGES
 
 const Sidebar = styled.div`
-width: 400px;
+  width: 400px;
   height: 100vh;
   position: fixed;
   top: 0;
-  left: ${({ isOpen }) => isOpen ? '0' : '-400px'}; 
+  left: ${({ isOpen }) => (isOpen ? "0" : "-400px")};
   transition: left 1s ease-in-out;
   z-index: 999;
   background-color: #000000;
   padding: 20px;
   box-sizing: border-box;
-  
+  display: flex;
+  flex-direction: column;
 `;
 
 const SidebarItem = styled.div`
@@ -29,14 +35,15 @@ const SidebarItem = styled.div`
   margin-bottom: 10px;
 `;
 
-
-
+const CloseButton = styled.button`
+  width: auto;
+  display: inline-block;
+`;
 
 //Takes in three props 'isOpen, onClose, and Word
 //If isOpen is true, it renders the modal window with word
 const Modal = ({ isOpen, onClose, word }) => {
   const [url, setUrl] = useState<string[]>([]);
-  
 
   //Essentially what needs to be done so that data can be accessed from database
   useEffect(() => {
@@ -48,7 +55,7 @@ const Modal = ({ isOpen, onClose, word }) => {
         storageBucket: "testcollect-51276.appspot.com",
         messagingSenderId: "151442162125",
         appId: "1:151442162125:web:31971c768442694db44484",
-        measurementId: "G-KBZW5DM2E9"
+        measurementId: "G-KBZW5DM2E9",
       };
 
       const app = initializeApp(firebaseConfig);
@@ -63,14 +70,15 @@ const Modal = ({ isOpen, onClose, word }) => {
         return;
       }
 
-      const extractedAudioUrls = audioSnapshot.docs.map((doc) => doc.data().URL);
+      const extractedAudioUrls = audioSnapshot.docs.map(
+        (doc) => doc.data().URL
+      );
       setUrl(extractedAudioUrls);
     };
 
     handleWordClick(word);
   }, [word]);
 
-  
   if (!isOpen) {
     return null;
   }
@@ -90,13 +98,9 @@ const Modal = ({ isOpen, onClose, word }) => {
       {url.map((url) => (
         <audio key={url} src={url} controls />
       ))}
-            <button className="close-button" onClick={onClose}>Close</button>
-
+      <CloseButton onClick={onClose}>Close</CloseButton>
     </Sidebar>
-  )
+  );
 };
 
 export default Modal;
-
-
-
