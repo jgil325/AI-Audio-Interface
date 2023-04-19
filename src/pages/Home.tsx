@@ -18,7 +18,7 @@ export const StyledHome = styled.div`
 const Home = () => {
   return (
     <StyledHome>
-      <h1>OiStir</h1>
+      {/* <h1>OiStir</h1> */}
       {/* <WordDisplay /> */}
       {/* <Fab actions={actions} /> */}
       <RainWords words={words} />
