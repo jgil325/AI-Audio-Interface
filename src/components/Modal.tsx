@@ -31,7 +31,7 @@ const Sidebar = styled.div`
 `;
 
 const SidebarItem = styled.div`
-  margin-top: 100px;
+  margin-top: 120px;
   color: white;
   margin-bottom: 10px;
   padding-left: 10px;
@@ -46,6 +46,19 @@ const SidebarAudioItem = styled.div`
 const CloseButton = styled.button`
   width: auto;
   display: inline-block;
+  padding: 10px;
+  background-color: gray;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: darkgrey;
+  }
 `;
 
 //Takes in three props 'isOpen, onClose, and Word
