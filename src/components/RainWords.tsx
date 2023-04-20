@@ -19,7 +19,7 @@ const RainAnimation = keyframes`
   }
 `;
 
- // WordWrapper: styled div that represents single word
+// WordWrapper: styled div that represents single word
 const WordWrapper = styled.div`
   position: absolute;
   z-index: 100;
@@ -111,11 +111,9 @@ const RainWords = ({ words }) => {
     setIsSidebarOpen(true);
   };
 
-
-
   const handleCloseSideBar = () => {
     setIsSidebarOpen(false);
-  }
+  };
 
   const handleAnimationToggle = () => {
     setIsAnimationPlaying(!isAnimationPlaying);
@@ -124,7 +122,7 @@ const RainWords = ({ words }) => {
   return (
     <RainWordsWrapper>
       {wordStates.map((word, index) => (
-       //Has an Onclick handler that calles handleWordClick function with the corresponding word from the words prop
+        //Has an Onclick handler that calles handleWordClick function with the corresponding word from the words prop
         <WordWrapper
           key={index}
           delay={word.delay}
@@ -137,7 +135,6 @@ const RainWords = ({ words }) => {
         >
           {words[index]}
         </WordWrapper>
-        
       ))}
       <ButtonWrapper onClick={handleAnimationToggle}>
         {isAnimationPlaying ? <PauseIcon /> : <PlayIcon />}
@@ -151,11 +148,8 @@ const RainWords = ({ words }) => {
           <ButtonWrapper onClick={handleCloseSideBar} />
         </Modal>
       )}
-
-      
     </RainWordsWrapper>
   );
 };
 
 export default RainWords;
-
