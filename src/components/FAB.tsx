@@ -7,7 +7,7 @@ import { IconContext } from "react-icons";
 import "../assets/logo.png"
 
 // const CustomIcon = () => (
-//   <IconContext.Provider value={{ size: "1.5em", color: "white" }}>
+//   <IconContext.Provider value={{ size: "1.5em", color: "black" }}>
 //     <svg viewBox="0 0 24 24">
 //       <path d="M12 2L3 15h18z" />
 //     </svg>
@@ -26,6 +26,7 @@ const Container = styled.ul`
   z-index: 1000;
   max-width: 52px;
   gap: 10px;
+  
 
   &.open {
     max-width: max-content;
@@ -68,6 +69,7 @@ const FabButton = styled.li`
 
 const FabAction = styled.li`
   border-radius: 50%;
+  background-color: #590059;
   box-shadow: 0 3px 6px #D7B4E0;
   display: grid;
   place-items: center;
