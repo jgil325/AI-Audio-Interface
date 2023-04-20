@@ -24,14 +24,14 @@ const Sidebar = styled.div`
   transition: left 1s ease-in-out;
   z-index: 999;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
-  
-  background-color: #F7EBFA;
+
+  background-color: #f7ebfa;
   padding: 20px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-radius: 30px; 
+  border-radius: 30px;
 
   overflow-y: auto;
 `;
@@ -41,8 +41,6 @@ const SidebarItem = styled.div`
   margin-bottom: 20px;
   color: black;
   padding-left: 10px;
-  
-  
 `;
 
 const AudioWrapper = styled.div`
@@ -55,7 +53,7 @@ const AudioWrapper = styled.div`
   audio::-webkit-media-controls-panel {
     appearance: none !important;
     -webkit-appearance: none;
-    background-color: #F7EBFA;
+    background-color: #f7ebfa;
   }
 
   audio::-webkit-media-controls-play-button {
@@ -68,7 +66,7 @@ const AudioWrapper = styled.div`
   }
 
   audio::-webkit-media-controls-time-remaining-display {
-    color:  #590059;
+    color: #590059;
   }
 
   audio::-webkit-media-controls-volume-slider-container {
@@ -83,7 +81,6 @@ const AudioWrapper = styled.div`
   audio::-webkit-media-controls-enclosure {
     color: #590059;
   }
-
 `;
 
 // //audio::-webkit-media-controls {
@@ -95,8 +92,6 @@ const AudioWrapper = styled.div`
 
 //background-color: #A020F0;
 
-
-
 const SidebarAudioItem = styled.div`
   color: white;
   margin-bottom: 10px;
@@ -105,16 +100,14 @@ const SidebarAudioItem = styled.div`
   .audio-name {
     font-size: 18px;
     margin-bottom: 10px;
-    
-    color: black
+
+    color: black;
   }
 
   ${AudioWrapper} {
     margin-bottom: 20px;
   }
-
 `;
-
 
 const CloseButton = styled.button`
   width: auto;
@@ -132,11 +125,9 @@ const CloseButton = styled.button`
   transition: background-color 0.2s ease-in-out;
 
   &:hover {
-    background-color: #9F42A4;
+    background-color: #9f42a4;
   }
 `;
-
-
 
 type AudioFile = {
   name: string;
@@ -153,7 +144,7 @@ const Modal = ({ isOpen, onClose, word }) => {
   useEffect(() => {
     const handleWordClick = async (word: string) => {
       const firebaseConfig = {
-        apiKey: "AIzaSyCqB1hMk_mVZXvb-Xk8jsBtN9SH_Ew3HUI",
+        apiKey: process.env.apiKey,
         authDomain: "testcollect-51276.firebaseapp.com",
         projectId: "testcollect-51276",
         storageBucket: "testcollect-51276.appspot.com",
@@ -189,28 +180,22 @@ const Modal = ({ isOpen, onClose, word }) => {
   }
 
   return (
-    
     <Sidebar isOpen={isOpen}>
       <SidebarItem>{word}</SidebarItem>
       <SidebarAudioItem>
-        
-      {url.map((audioFile) => (
+        {url.map((audioFile) => (
           <AudioWrapper key={audioFile.url}>
             <div className="audio-name">{audioFile.name}</div>
             <audio src={audioFile.url} controls />
           </AudioWrapper>
         ))}
-        
       </SidebarAudioItem>
       <CloseButton onClick={onClose}>Close</CloseButton>
     </Sidebar>
-    
   );
 };
 
 export default Modal;
-
-
 
 // {/* {url.map((url) => (
 //           <audio key={url} src={url} controls />
