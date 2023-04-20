@@ -14,10 +14,14 @@ const Name = styled.h3`
   padding-right: 10px;
 `;
 
-const handleWordClick = async (word: string) => {
+const handleWordClick = async (word: string) => {};
+
+interface PersonProps {
+  name: string;
+  info: string;
 }
 
-const Person = ({ name, info }) => {
+const Person = ({ name, info }: PersonProps) => {
   return (
     <PersonContainer>
       {/* <Name>{name}</Name>
