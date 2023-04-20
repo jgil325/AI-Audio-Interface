@@ -4,6 +4,7 @@ import { MdAdd } from "react-icons/md";
 import { IoIosApps, IoMdMenu } from "react-icons/io";
 import logo from "../assets/logo-draft.png";
 import { IconContext } from "react-icons";
+import "../assets/logo.png"
 
 // const CustomIcon = () => (
 //   <IconContext.Provider value={{ size: "1.5em", color: "white" }}>
@@ -32,25 +33,42 @@ const Container = styled.ul`
 `;
 
 const FabButton = styled.li`
-  border-radius: 50%;
-  box-shadow: 0 3px 6px lightgrey;
+ 
   display: grid;
   place-items: center;
   margin: 8px 0;
   font-size: 28px;
-  padding: 12px;
+  
   cursor: pointer;
   position: relative;
-  background-color: #00a8ff;
+ 
+ 
+
+  img {
+    width: 80px;
+    height: 24px;
+  }
 
   svg {
-    fill: white;
-  }
+    display: none
+    }
+  
 `;
+
+//  fill: white;
+// background-image: url(../assets/logo.png);
+// background-color: #590059;
+// border-radius: 50%;
+ 
+//box-shadow: 0 3px 6px lightgrey;
+
+  // svg {
+  //   display: none
+  //  }
 
 const FabAction = styled.li`
   border-radius: 50%;
-  box-shadow: 0 3px 6px lightgrey;
+  box-shadow: 0 3px 6px #D7B4E0;
   display: grid;
   place-items: center;
   margin: 8px 0;
@@ -103,6 +121,7 @@ const Fab = ({ actions }: FABProps) => {
   const mouseEnter = () => setOpen(true);
 
   const mouseLeave = () => setOpen(false);
+  //<a href="https://ibb.co/QJW9dh5"><img src="https://i.ibb.co/fX3MvZc/logo.png" alt="logo" border="0"></a>
 
   return (
     <Container
@@ -111,8 +130,8 @@ const Fab = ({ actions }: FABProps) => {
       onMouseLeave={mouseLeave}
     >
       <FabButton>
-        <IoMdMenu />
-        {/* <CustomIcon /> */}
+      <img src="https://i.ibb.co/fX3MvZc/logo.png" alt="Navbar opener" />
+      
       </FabButton>
       {actions.map((action, index) => (
         <FabAction
