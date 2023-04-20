@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import Modal from "./Modal";
+import { IoIosPlay, IoIosPause } from "react-icons/io";
 
 const RainWordsWrapper = styled.div``;
 
@@ -23,15 +24,43 @@ const WordWrapper = styled.div`
   cursor: pointer;
 `;
 
-const ButtonWrapper = styled.button`
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background-color: transparent;
-  border: none;
-  color: white;
-  font-size: 1.5rem;
+// const ButtonWrapper = styled.button`
+//   position: fixed;
+//   top: 20px;
+//   right: 20px;
+//   background-color: transparent;
+//   border: none;
+//   color: white;
+//   font-size: 1.5rem;
+//   cursor: pointer;
+//   z-index: 1000;
+// `;
+
+const ButtonWrapper = styled.li`
+  border-radius: 50%;
+  box-shadow: 0 3px 6px lightgrey;
+  display: grid;
+  place-items: center;
+  margin: 8px 0;
+  font-size: 28px;
+  padding: 12px;
   cursor: pointer;
+  position: absolute;
+  right: 25px;
+  transform: translateY(-725%);
+  background-color: #ffffff;
+
+  svg {
+    fill: black;
+  }
+`;
+
+const PauseIcon = styled(IoIosPause)`
+  color: white;
+`;
+
+const PlayIcon = styled(IoIosPlay)`
+  color: white;
 `;
 
 const RainWords = ({ words }) => {
@@ -99,7 +128,7 @@ const RainWords = ({ words }) => {
         </WordWrapper>
       ))}
       <ButtonWrapper onClick={handleAnimationToggle}>
-        {isAnimationPlaying ? "Pause" : "Play"}
+        {isAnimationPlaying ? <PauseIcon /> : <PlayIcon />}
       </ButtonWrapper>
       {isSidebarOpen && (
         <Modal
