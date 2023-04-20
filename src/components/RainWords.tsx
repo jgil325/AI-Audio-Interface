@@ -110,11 +110,7 @@ const RainWords = ({ words }) => {
           onClose={handleCloseSideBar}
           word={selectedWord}
         >
-          <ButtonWrapper onClick={handleCloseSideBar}>X</ButtonWrapper>
-
-          <h2>{selectedWord}</h2>
-          <p>This is the text for {selectedWord}.</p>
-          <button onClick={handleCloseSideBar}>Close</button>
+          <ButtonWrapper onClick={handleCloseSideBar} />
         </Modal>
       )}
     </RainWordsWrapper>
