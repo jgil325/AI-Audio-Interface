@@ -73,8 +73,11 @@ const PauseIcon = styled(IoIosPause)`
 const PlayIcon = styled(IoIosPlay)`
   color: white;
 `;
+interface RainProps {
+  words: string[];
+}
 
-const RainWords = (words: string) => {
+const RainWords = ({ words }: RainProps) => {
   const [wordStates, setWordStates] = useState<any[]>([]);
   const [selectedWord, setSelectedWord] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
