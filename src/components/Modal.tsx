@@ -1,8 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
-
-import ReactDOM from "react-dom";
 import styled from "styled-components";
+import { initializeApp } from "firebase/app";
 import {
   getFirestore,
   collection,
@@ -10,7 +9,6 @@ import {
   onSnapshot,
   getDocs,
 } from "firebase/firestore";
-import { initializeApp } from "firebase/app";
 
 //SIDEBAR CHANGES
 //background-color: #000000;
