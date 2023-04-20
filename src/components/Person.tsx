@@ -26,7 +26,7 @@ const Person = ({ name, info }: PersonProps) => {
     <PersonContainer>
       {/* <Name>{name}</Name>
       <p>{info}</p> */}
-      <button onClick={() => handleWordClick(name)}>Hi</button>
+      <button onClick={() => handleWordClick(name)}>{name}</button>
     </PersonContainer>
   );
 };

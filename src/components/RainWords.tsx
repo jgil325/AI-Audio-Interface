@@ -19,8 +19,12 @@ const RainAnimation = keyframes`
   }
 `;
 
+interface WordProps {
+  delay: string;
+}
+
 // WordWrapper: styled div that represents single word
-const WordWrapper = styled.div`
+const WordWrapper = styled.div<WordProps>`
   position: absolute;
   z-index: 100;
   font-size: 1.5rem;
