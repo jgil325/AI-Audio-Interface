@@ -49,6 +49,7 @@ const ButtonWrapper = styled.li`
   right: 25px;
   transform: translateY(-725%);
   background-color: #ffffff;
+  z-index: 1000;
 
   svg {
     fill: black;
