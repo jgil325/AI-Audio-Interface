@@ -59,6 +59,5 @@ const d = [
 ];
 
 const words: string[] = d.map((item) => item.name);
-//test
-// asdkjlfdsa
+
 export default words;
