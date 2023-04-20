@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
+
+//import { ButtonWrapper } from "./RainWords";
+
+//COMMENT
 import Modal from "./Modal";
 import { IoIosPlay, IoIosPause } from "react-icons/io";
 
+// Empty div that serves as a container for rain of words
 const RainWordsWrapper = styled.div``;
 
 const RainAnimation = keyframes`
@@ -14,11 +19,12 @@ const RainAnimation = keyframes`
   }
 `;
 
+ // WordWrapper: styled div that represents single word
 const WordWrapper = styled.div`
   position: absolute;
   z-index: 100;
   font-size: 1.5rem;
-  color: white;
+  color: black;
   animation: ${RainAnimation} 18s linear infinite;
   animation-delay: ${(props) => props.delay}s;
   cursor: pointer;
@@ -72,6 +78,7 @@ const RainWords = ({ words }) => {
   const [windowWidth, setWindowWidth] = useState<number>(0);
   const [isAnimationPlaying, setIsAnimationPlaying] = useState(true);
 
+  //Called whenever the array of words changes, and it it initializes a wordStates array with some values
   useEffect(() => {
     setWordStates(
       words.map((word: any, index: number) => ({
@@ -104,9 +111,11 @@ const RainWords = ({ words }) => {
     setIsSidebarOpen(true);
   };
 
+
+
   const handleCloseSideBar = () => {
     setIsSidebarOpen(false);
-  };
+  }
 
   const handleAnimationToggle = () => {
     setIsAnimationPlaying(!isAnimationPlaying);
@@ -115,6 +124,7 @@ const RainWords = ({ words }) => {
   return (
     <RainWordsWrapper>
       {wordStates.map((word, index) => (
+       //Has an Onclick handler that calles handleWordClick function with the corresponding word from the words prop
         <WordWrapper
           key={index}
           delay={word.delay}
@@ -127,6 +137,7 @@ const RainWords = ({ words }) => {
         >
           {words[index]}
         </WordWrapper>
+        
       ))}
       <ButtonWrapper onClick={handleAnimationToggle}>
         {isAnimationPlaying ? <PauseIcon /> : <PlayIcon />}
@@ -140,8 +151,11 @@ const RainWords = ({ words }) => {
           <ButtonWrapper onClick={handleCloseSideBar} />
         </Modal>
       )}
+
+      
     </RainWordsWrapper>
   );
 };
 
 export default RainWords;
+
