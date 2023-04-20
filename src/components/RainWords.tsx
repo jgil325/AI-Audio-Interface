@@ -57,7 +57,7 @@ const ButtonWrapper = styled.li`
   cursor: pointer;
   position: absolute;
   right: 25px;
-  transform: translateY(-725%);
+  top: 25px;
   background-color: #ffffff;
   z-index: 1000;
 
