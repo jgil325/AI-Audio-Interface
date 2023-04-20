@@ -5,8 +5,7 @@ import styled, { keyframes } from "styled-components";
 
 //COMMENT
 import Modal from "./Modal";
-
-
+import { IoIosPlay, IoIosPause } from "react-icons/io";
 
 // Empty div that serves as a container for rain of words
 const RainWordsWrapper = styled.div``;
@@ -30,31 +29,54 @@ const WordWrapper = styled.div`
   animation-delay: ${(props) => props.delay}s;
   cursor: pointer;
 `;
-//Cursor-pointer above is new
 
-const ButtonWrapper = styled.button`
-position: fixed;
-top: 20px;
-right: 20px;
-background-color: transparent;
-border: none;
-color: white;
-font-size: 1.5rem;
-cursor: pointer;
+// const ButtonWrapper = styled.button`
+//   position: fixed;
+//   top: 20px;
+//   right: 20px;
+//   background-color: transparent;
+//   border: none;
+//   color: white;
+//   font-size: 1.5rem;
+//   cursor: pointer;
+//   z-index: 1000;
+// `;
+
+const ButtonWrapper = styled.li`
+  border-radius: 50%;
+  box-shadow: 0 3px 6px lightgrey;
+  display: grid;
+  place-items: center;
+  margin: 8px 0;
+  font-size: 28px;
+  padding: 12px;
+  cursor: pointer;
+  position: absolute;
+  right: 25px;
+  transform: translateY(-725%);
+  background-color: #ffffff;
+  z-index: 1000;
+
+  svg {
+    fill: black;
+  }
+`;
+
+const PauseIcon = styled(IoIosPause)`
+  color: white;
+`;
+
+const PlayIcon = styled(IoIosPlay)`
+  color: white;
 `;
 
 const RainWords = ({ words }) => {
-  // Array of objects that represent the state of each falling word
   const [wordStates, setWordStates] = useState<any[]>([]);
-  //Currently selected word that the user clicked on
   const [selectedWord, setSelectedWord] = useState("");
-  //Boolean flag that indicates whether the modal is currently open or not
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  //Window height + width are height and width of the browser window
   const [windowHeight, setWindowHeight] = useState<number>(0);
   const [windowWidth, setWindowWidth] = useState<number>(0);
-
-
+  const [isAnimationPlaying, setIsAnimationPlaying] = useState(true);
 
   //Called whenever the array of words changes, and it it initializes a wordStates array with some values
   useEffect(() => {
@@ -62,19 +84,17 @@ const RainWords = ({ words }) => {
       words.map((word: any, index: number) => ({
         top: -50,
         left: Math.random() * window.innerWidth,
-        delay: index * 0.2,
-        shift: Math.random() * 100 - 50, // add a random shift value between -50 and 50
+        delay: index * 0.3,
+        shift: Math.random() * 100 - 50,
       }))
     );
   }, [words]);
 
-  //Sets initial width and height
   useEffect(() => {
     setWindowHeight(window.innerHeight);
     setWindowWidth(window.innerWidth);
   }, []);
 
-  //Adds an event listener for resize event that updates height and width when the window is resized
   useEffect(() => {
     const handleResize = () => {
       setWindowHeight(window.innerHeight);
@@ -86,26 +106,6 @@ const RainWords = ({ words }) => {
     };
   }, []);
 
-  //Sets up an interval to update the position of the falling words every 10 seconds
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setWordStates((prevState) =>
-        prevState.map((wordState) => ({
-          ...wordState,
-          top: wordState.top >= windowHeight + 50 ? -50 : wordState.top + 10,
-          left:
-            wordState.top >= windowHeight + 50
-              ? Math.random() * windowWidth
-              : wordState.left,
-        }))
-      );
-    }, 10000);
-
-    return () => clearInterval(intervalId);
-  }, [windowHeight, windowWidth]);
-
-  //Called when the word is clicked and sets selectedWord.
-  //Then opens up the modal by setting the isModalOpen state to true
   const handleWordClick = (word: string) => {
     setSelectedWord(word);
     setIsSidebarOpen(true);
@@ -117,36 +117,38 @@ const RainWords = ({ words }) => {
     setIsSidebarOpen(false);
   }
 
+  const handleAnimationToggle = () => {
+    setIsAnimationPlaying(!isAnimationPlaying);
+  };
+
   return (
-    //Contains a mapping of the wordStates Array to the Word Wrapper element for each falling word
     <RainWordsWrapper>
       {wordStates.map((word, index) => (
        //Has an Onclick handler that calles handleWordClick function with the corresponding word from the words prop
         <WordWrapper
           key={index}
-          style={{ top: word.top, left: word.left + word.shift }}
           delay={word.delay}
           onClick={() => handleWordClick(words[index])}
+          style={{
+            top: word.top,
+            left: word.left + word.shift,
+            animationPlayState: isAnimationPlaying ? "running" : "paused",
+          }}
         >
           {words[index]}
         </WordWrapper>
         
       ))}
-
-     
+      <ButtonWrapper onClick={handleAnimationToggle}>
+        {isAnimationPlaying ? <PauseIcon /> : <PlayIcon />}
+      </ButtonWrapper>
       {isSidebarOpen && (
         <Modal
           isOpen={isSidebarOpen}
           onClose={handleCloseSideBar}
           word={selectedWord}
         >
-        <ButtonWrapper onClick={handleCloseSideBar}>X</ButtonWrapper>
-
-
-        <h2>{selectedWord}</h2>
-        <p>This is the text for {selectedWord}.</p>
-        <button onClick={handleCloseSideBar}>Close</button>
-
+          <ButtonWrapper onClick={handleCloseSideBar} />
         </Modal>
       )}
 
