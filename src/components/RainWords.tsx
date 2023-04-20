@@ -25,7 +25,7 @@ const WordWrapper = styled.div`
   position: absolute;
   z-index: 100;
   font-size: 1.5rem;
-  color: #FFFFFF;
+  color: black;
   animation: ${RainAnimation} 18s linear infinite;
   animation-delay: ${(props) => props.delay}s;
   cursor: pointer;

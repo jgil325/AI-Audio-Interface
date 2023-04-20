@@ -23,6 +23,7 @@ const Sidebar = styled.div`
   left: ${({ isOpen }) => (isOpen ? "0" : "-400px")};
   transition: left 1s ease-in-out;
   z-index: 999;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
   
   background-color: #F7EBFA;
   padding: 20px;
@@ -40,6 +41,7 @@ const SidebarItem = styled.div`
   margin-bottom: 20px;
   color: black;
   padding-left: 10px;
+  
   
 `;
 
@@ -101,7 +103,7 @@ const SidebarAudioItem = styled.div`
   padding-left: 10px;
 
   .audio-name {
-    font-size: 15px;
+    font-size: 18px;
     margin-bottom: 10px;
     
     color: black

@@ -13,8 +13,9 @@ export const StyledHome = styled.div`
   height: 100vh;
   font-size: 2rem;
   text-align: center;
+  background-color: #FBFCFA;
 `;
-
+// #FBFCFA
 const Home = () => {
   return (
     <StyledHome>
