@@ -136,9 +136,15 @@ type AudioFile = {
   url: string;
 };
 
+interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  word: string;
+}
+
 //Takes in three props 'isOpen, onClose, and Word
 //If isOpen is true, it renders the modal window with word
-const Modal = ({ isOpen, onClose, word }) => {
+const Modal = ({ isOpen, onClose, word }: ModalProps) => {
   //const [url, setUrl] = useState<string[]>([]);
   const [url, setUrl] = useState<AudioFile[]>([]);
 
