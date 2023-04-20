@@ -74,7 +74,7 @@ const PlayIcon = styled(IoIosPlay)`
   color: white;
 `;
 
-const RainWords = ({ words }) => {
+const RainWords = (words: string) => {
   const [wordStates, setWordStates] = useState<any[]>([]);
   const [selectedWord, setSelectedWord] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
