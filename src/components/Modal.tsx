@@ -13,7 +13,11 @@ import {
 //SIDEBAR CHANGES
 //background-color: #000000;
 
-const Sidebar = styled.div`
+interface SidebarProps {
+  isOpen: boolean;
+}
+
+const Sidebar = styled.div<SidebarProps>`
   width: 400px;
   height: 100vh;
   position: fixed;
