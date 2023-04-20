@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { initializeApp } from "firebase/app";
@@ -140,6 +140,7 @@ interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   word: string;
+  children: ReactNode; // Add this line to include the children prop
 }
 
 //Takes in three props 'isOpen, onClose, and Word
