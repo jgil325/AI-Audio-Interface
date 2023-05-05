@@ -9,11 +9,27 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #f7ebfa;
+  font-family: 'Montserrat', sans-serif; 
+`;
+
+const InnerContainer = styled.div`
+  width: 50vw;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
 `;
 
 const TranscribeButton = styled.button`
-  color: white;
-  background: tomato;
+  color: #f7ebfa;
+  background-color: #590059;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   padding: 10px 20px;
   margin-top: 20px;
@@ -31,17 +47,23 @@ const Input = styled.input`
   outline: none;
 `;
 
+//Contains 'Transcribe audio files'
 const Title = styled.h1`
   font-size: 24px;
   margin-bottom: 20px;
+  color: #590059;
+  
 `;
 
+//Contains choose file and transcribe button
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  color:  #590059;
 `;
 
+//Container for transcription
 const TranscriptionContainer = styled.div`
   margin-top: 20px;
   display: flex;
@@ -52,15 +74,19 @@ const TranscriptionContainer = styled.div`
 const TranscriptionTitle = styled.h2`
   font-size: 18px;
   margin-bottom: 10px;
+  color: #590059;
 `;
+
 
 const TranscriptionText = styled.p`
   font-size: 16px;
   text-align: center;
+  color: #590059;
 `;
 
 const AudioPlayerContainer = styled.div`
   margin-top: 20px;
+  color: #590059;
 `;
 
 const Upload: React.FC = () => {
@@ -114,6 +140,7 @@ const Upload: React.FC = () => {
 
   return (
     <Container>
+      <InnerContainer>
       <Title>Transcribe Audio Files</Title>
       <InputContainer>
         <Input type="file" onChange={handleFile} accept="audio/*" />
@@ -126,6 +153,7 @@ const Upload: React.FC = () => {
       <AudioPlayerContainer>
         <AudioPlayer file={file} />
       </AudioPlayerContainer>
+      </InnerContainer>
     </Container>
   );
 };
