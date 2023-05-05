@@ -28,6 +28,7 @@ const WordWrapper = styled.div<WordProps>`
   position: absolute;
   z-index: 100;
   font-size: 1.5rem;
+  font-family: 'Montserrat', sans-serif; 
   color: black;
   animation: ${RainAnimation} 18s linear infinite;
   animation-delay: ${(props) => props.delay}s;
@@ -78,9 +79,13 @@ interface RainProps {
 }
 
 const RainWords = ({ words }: RainProps) => {
+    // Array of objects that represent the state of each falling word
   const [wordStates, setWordStates] = useState<any[]>([]);
+    //Currently selected word that the user clicked on
   const [selectedWord, setSelectedWord] = useState("");
+    //Boolean flag that indicates whether the sideBar is currently open or not
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    //Window height + width are height and width of the browser window
   const [windowHeight, setWindowHeight] = useState<number>(0);
   const [windowWidth, setWindowWidth] = useState<number>(0);
   const [isAnimationPlaying, setIsAnimationPlaying] = useState(true);

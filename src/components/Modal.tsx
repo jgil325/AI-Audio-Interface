@@ -26,7 +26,7 @@ const Sidebar = styled.div<SidebarProps>`
   transition: left 1s ease-in-out;
   z-index: 999;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
-
+  font-family: 'Montserrat', sans-serif; 
   background-color: #f7ebfa;
   padding: 20px;
   box-sizing: border-box;
