@@ -35,6 +35,10 @@ const PopupWrapper = styled.div<PopupWrapperProps>`
   border-radius: 10px;
 `;
 
+const PopupText = styled.p`
+  padding-top: 20px;
+`;
+
 const CloseButton = styled.button`
   position: absolute;
   top: 0;
@@ -73,7 +77,7 @@ const Home = () => {
     <StyledHome>
       {showPopup && <Overlay />}
       <PopupWrapper show={showPopup}>
-        <p>This is a popup that explains how the site works.</p>
+        <PopupText>This is a popup that explains how the site works.</PopupText>
         <CloseButton onClick={() => setShowPopup(false)}> X </CloseButton>
       </PopupWrapper>
       <RainWords words={words} />
