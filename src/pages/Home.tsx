@@ -28,28 +28,30 @@ const PopupWrapper = styled.div<PopupWrapperProps>`
   background-color: white;
   box-shadow: 0 3px 6px lightgrey;
   padding: 20px;
-  width: 300px;
+  width: full;
   z-index: 1000;
   display: ${(props) => (props.show ? "block" : "none")};
   color: black;
   border-radius: 10px;
 `;
 
-const PopupText = styled.p`
+const PopupTextWrapper = styled.div`
   padding-top: 20px;
 `;
 
-const CloseButton = styled.button`
-  position: absolute;
-  top: 0;
-  right: 0;
-  border: none;
+const PopupText = styled.p`
+  white-space: pre-wrap;
+`;
+
+const GetStartedButton = styled.button`
   background-color: #353b48;
   color: white;
-  font-size: 20px;
-  cursor: pointer;
-  padding: 10px;
+  border: none;
+  padding: 10px 20px;
   border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
 `;
 
 const Overlay = styled.div`
@@ -77,8 +79,17 @@ const Home = () => {
     <StyledHome>
       {showPopup && <Overlay />}
       <PopupWrapper show={showPopup}>
-        <PopupText>This is a popup that explains how the site works.</PopupText>
-        <CloseButton onClick={() => setShowPopup(false)}> X </CloseButton>
+        <PopupTextWrapper>
+          <PopupText>1. Browse and click on words</PopupText>
+          <PopupText>2. Listen to the audio files on the left</PopupText>
+          <PopupText>
+            3. Download or Bookmark the audio clips that inspire you. And
+            you&apos;re ready to jumpstart your next big project!
+          </PopupText>
+        </PopupTextWrapper>
+        <GetStartedButton onClick={() => setShowPopup(false)}>
+          Get Started
+        </GetStartedButton>
       </PopupWrapper>
       <RainWords words={words} />
     </StyledHome>
