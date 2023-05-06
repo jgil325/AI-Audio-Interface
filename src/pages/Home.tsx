@@ -83,8 +83,10 @@ const Home = () => {
           <PopupText>1. Browse and click on words</PopupText>
           <PopupText>2. Listen to the audio files on the left</PopupText>
           <PopupText>
-            3. Download or Bookmark the audio clips that inspire you. And
-            you&apos;re ready to jumpstart your next big project!
+            3. Download or Bookmark the audio clips that inspire you.
+          </PopupText>
+          <PopupText>
+            And you&apos;re ready to jumpstart your next big project!
           </PopupText>
         </PopupTextWrapper>
         <GetStartedButton onClick={() => setShowPopup(false)}>
